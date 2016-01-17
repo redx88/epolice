@@ -3,18 +3,12 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2016 at 01:36 AM
+-- Generation Time: Jan 17, 2016 at 09:19 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `epoliceclearance`
@@ -115,6 +109,18 @@ CREATE TABLE IF NOT EXISTS `certificate` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `official`
+--
+
+CREATE TABLE IF NOT EXISTS `official` (
+`id` int(11) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `rank_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `profiles`
 --
 
@@ -166,6 +172,41 @@ INSERT INTO `profiles_fields` (`id`, `varname`, `title`, `field_type`, `field_si
 (1, 'lastname', 'Last Name', 'VARCHAR', '50', '3', 1, '', '', 'Incorrect Last Name (length between 3 and 50 characters).', '', '', '', '', 1, 3),
 (2, 'firstname', 'First Name', 'VARCHAR', '50', '3', 1, '', '', 'Incorrect First Name (length between 3 and 50 characters).', '', '', '', '', 0, 3),
 (3, 'accesslist', 'Access List', 'VARCHAR', '25', '1', 1, '', '', '', '', '', '', '', 2, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rank`
+--
+
+CREATE TABLE IF NOT EXISTS `rank` (
+`id` int(11) NOT NULL,
+  `longName` varchar(100) NOT NULL,
+  `shortName` varchar(25) NOT NULL,
+  `active` tinyint(1) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rank`
+--
+
+INSERT INTO `rank` (`id`, `longName`, `shortName`, `active`) VALUES
+(1, 'Director General', 'DGen.', 1),
+(2, 'Deputy Director General', 'DDG', 1),
+(3, 'Director', 'Dir.', 1),
+(4, 'Chief Superintendent', 'C/Supt.', 1),
+(5, 'Senior Superintendent', 'S/Supt.', 1),
+(6, 'Superintendent', 'Supt.', 1),
+(7, 'Chief Inspector', 'C/Insp.', 1),
+(8, 'Senior Inspector', 'S/Insp.', 1),
+(9, 'Inspector', 'Insp.', 1),
+(10, 'Senior Police Officer IV', 'SPO4', 1),
+(11, 'Senior Police Officer III', 'SPO3', 1),
+(12, 'Senior Police Officer II', 'SPO2', 1),
+(13, 'Senior Police Officer I', 'SPO1', 1),
+(14, 'Police Officer III', 'PO3', 1),
+(15, 'Police Officer II', 'PO2', 1),
+(16, 'Police Officer I', 'PO1', 1);
 
 -- --------------------------------------------------------
 
@@ -253,6 +294,12 @@ ALTER TABLE `certificate`
  ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `official`
+--
+ALTER TABLE `official`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `profiles`
 --
 ALTER TABLE `profiles`
@@ -263,6 +310,12 @@ ALTER TABLE `profiles`
 --
 ALTER TABLE `profiles_fields`
  ADD PRIMARY KEY (`id`), ADD KEY `varname` (`varname`,`widget`,`visible`);
+
+--
+-- Indexes for table `rank`
+--
+ALTER TABLE `rank`
+ ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `rights`
@@ -297,6 +350,11 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `certificate`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `official`
+--
+ALTER TABLE `official`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `profiles`
 --
 ALTER TABLE `profiles`
@@ -307,6 +365,11 @@ MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 ALTER TABLE `profiles_fields`
 MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
+-- AUTO_INCREMENT for table `rank`
+--
+ALTER TABLE `rank`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+--
 -- AUTO_INCREMENT for table `station`
 --
 ALTER TABLE `station`
@@ -316,6 +379,3 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 ALTER TABLE `users`
 MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
