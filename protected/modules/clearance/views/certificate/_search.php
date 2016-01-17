@@ -1,6 +1,6 @@
 <?php
-/* @var $this ClearanceController */
-/* @var $model Clearance */
+/* @var $this CertificateController */
+/* @var $model Certificate */
 /* @var $form CActiveForm */
 ?>
 
@@ -27,8 +27,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'clearance_no'); ?>
-		<?php echo $form->textField($model,'clearance_no',array('size'=>60,'maxlength'=>200)); ?>
+		<?php echo $form->label($model,'certificate_no'); ?>
+		<?php echo $form->textField($model,'certificate_no',array('size'=>60,'maxlength'=>200)); ?>
 	</div>
 
 	<div class="row">

@@ -1,6 +1,6 @@
 <?php
 
-class ClearanceController extends Controller
+class CertificateController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -62,15 +62,14 @@ class ClearanceController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Clearance;
-		$model=new Applicant;
+		$model=new Certificate;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Clearance']))
+		if(isset($_POST['Certificate']))
 		{
-			$model->attributes=$_POST['Clearance'];
+			$model->attributes=$_POST['Certificate'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -92,9 +91,9 @@ class ClearanceController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Clearance']))
+		if(isset($_POST['Certificate']))
 		{
-			$model->attributes=$_POST['Clearance'];
+			$model->attributes=$_POST['Certificate'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -123,7 +122,7 @@ class ClearanceController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Clearance');
+		$dataProvider=new CActiveDataProvider('Certificate');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -134,10 +133,10 @@ class ClearanceController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Clearance('search');
+		$model=new Certificate('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Clearance']))
-			$model->attributes=$_GET['Clearance'];
+		if(isset($_GET['Certificate']))
+			$model->attributes=$_GET['Certificate'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -148,12 +147,12 @@ class ClearanceController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Clearance the loaded model
+	 * @return Certificate the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Clearance::model()->findByPk($id);
+		$model=Certificate::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -161,11 +160,11 @@ class ClearanceController extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Clearance $model the model to be validated
+	 * @param Certificate $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='clearance-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='certificate-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

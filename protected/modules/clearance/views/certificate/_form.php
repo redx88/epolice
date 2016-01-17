@@ -1,13 +1,13 @@
 <?php
-/* @var $this ClearanceController */
-/* @var $model Clearance */
+/* @var $this CertificateController */
+/* @var $model Certificate */
 /* @var $form CActiveForm */
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'clearance-form',
+	'id'=>'certificate-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
@@ -32,9 +32,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'clearance_no'); ?>
-		<?php echo $form->textField($model,'clearance_no',array('size'=>60,'maxlength'=>200)); ?>
-		<?php echo $form->error($model,'clearance_no'); ?>
+		<?php echo $form->labelEx($model,'certificate_no'); ?>
+		<?php echo $form->textField($model,'certificate_no',array('size'=>60,'maxlength'=>200)); ?>
+		<?php echo $form->error($model,'certificate_no'); ?>
 	</div>
 
 	<div class="row">

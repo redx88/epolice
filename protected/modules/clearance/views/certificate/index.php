@@ -1,18 +1,18 @@
 <?php
-/* @var $this ClearanceController */
+/* @var $this CertificateController */
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Clearances',
+	'Certificates',
 );
 
 $this->menu=array(
-	array('label'=>'Create Clearance', 'url'=>array('create')),
-	array('label'=>'Manage Clearance', 'url'=>array('admin')),
+	array('label'=>'Create Certificate', 'url'=>array('create')),
+	array('label'=>'Manage Certificate', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Clearances</h1>
+<h1>Certificates</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

@@ -1,6 +1,6 @@
 <?php
-/* @var $this ClearanceController */
-/* @var $data Clearance */
+/* @var $this CertificateController */
+/* @var $data Certificate */
 ?>
 
 <div class="view">
@@ -17,8 +17,8 @@
 	<?php echo CHtml::encode($data->applicant_id); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('clearance_no')); ?>:</b>
-	<?php echo CHtml::encode($data->clearance_no); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('certificate_no')); ?>:</b>
+	<?php echo CHtml::encode($data->certificate_no); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('purpose')); ?>:</b>

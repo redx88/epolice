@@ -53,7 +53,6 @@ class Certificate extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'applicant'	=> array(self::BELONGS_TO, 'Applicant', 'applicant_id'),
 		);
 	}
 
@@ -66,7 +65,7 @@ class Certificate extends CActiveRecord
 			'id' => 'ID',
 			'station_id' => 'Station',
 			'applicant_id' => 'Applicant',
-			'certificate_no' => 'certificate No',
+			'certificate_no' => 'Certificate No',
 			'purpose' => 'Purpose',
 			'or_number' => 'Or Number',
 			'investigator_id' => 'Investigator',
@@ -118,7 +117,7 @@ class Certificate extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return certificate the static model class
+	 * @return Certificate the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

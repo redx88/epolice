@@ -1,18 +1,18 @@
 <?php
-/* @var $this ClearanceController */
-/* @var $model Clearance */
+/* @var $this CertificateController */
+/* @var $model Certificate */
 
 $this->breadcrumbs=array(
-	'Clearances'=>array('index'),
+	'Certificates'=>array('index'),
 	'Create',
 );
 
 $this->menu=array(
-	array('label'=>'List Clearance', 'url'=>array('index')),
-	array('label'=>'Manage Clearance', 'url'=>array('admin')),
+	array('label'=>'List Certificate', 'url'=>array('index')),
+	array('label'=>'Manage Certificate', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Clearance</h1>
+<h1>Create Certificate</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

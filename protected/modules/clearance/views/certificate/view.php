@@ -1,22 +1,22 @@
 <?php
-/* @var $this ClearanceController */
-/* @var $model Clearance */
+/* @var $this CertificateController */
+/* @var $model Certificate */
 
 $this->breadcrumbs=array(
-	'Clearances'=>array('index'),
+	'Certificates'=>array('index'),
 	$model->id,
 );
 
 $this->menu=array(
-	array('label'=>'List Clearance', 'url'=>array('index')),
-	array('label'=>'Create Clearance', 'url'=>array('create')),
-	array('label'=>'Update Clearance', 'url'=>array('update', 'id'=>$model->id)),
-	array('label'=>'Delete Clearance', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Clearance', 'url'=>array('admin')),
+	array('label'=>'List Certificate', 'url'=>array('index')),
+	array('label'=>'Create Certificate', 'url'=>array('create')),
+	array('label'=>'Update Certificate', 'url'=>array('update', 'id'=>$model->id)),
+	array('label'=>'Delete Certificate', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Manage Certificate', 'url'=>array('admin')),
 );
 ?>
 
-<h1>View Clearance #<?php echo $model->id; ?></h1>
+<h1>View Certificate #<?php echo $model->id; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
@@ -24,7 +24,7 @@ $this->menu=array(
 		'id',
 		'station_id',
 		'applicant_id',
-		'clearance_no',
+		'certificate_no',
 		'purpose',
 		'or_number',
 		'investigator_id',
