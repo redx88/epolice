@@ -14,4 +14,13 @@ return array(
 		//'tablePrefix' => '',
 	),
 	
+	'phAddressDb'=>array(
+		'connectionString'=>'mysql:host=localhost;dbname=epolicephaddress',
+		'username' => 'root	',
+		'password' => '',
+		'class'=>'CDbConnection',
+		'charset' => 'utf8',
+		//'tablePrefix' => '',
+	),
+	
 );
