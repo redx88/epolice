@@ -11,7 +11,7 @@
 			'items'=>array(
         
         
-				array('label'=>'<i class="icon icon-home"></i>  Create New Record', 'url'=>$this->createUrl('/main/applicant/create'),'itemOptions'=>array('class'=>'')),
+				array('label'=>'<i class="icon icon-home"></i>  Create New Record', 'url'=>$this->createUrl('/clearance/certificate/create'),'itemOptions'=>array('class'=>'')),
         array('label'=>'<i class="icon icon-edit"></i>  Renew Clearance', 'url'=>$this->createUrl('/main/applicant/create'),'itemOptions'=>array('class'=>'')),
         array('label'=>'<i class="icon icon-file"></i>  View Record', 'url'=>$this->createUrl('/main/applicant/create'),'itemOptions'=>array('class'=>'')),
 				array('label'=>'<i class="icon icon-search"></i> Search', 'url'=>array('/config/admin')),

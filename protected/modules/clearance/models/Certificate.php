@@ -14,6 +14,7 @@
  * @property integer $officer_id
  * @property string $findings
  * @property string $residentcertnumber
+ * @property integer $residentcertdateissued
  * @property string $amount
  * @property integer $datefiled
  */
@@ -35,13 +36,13 @@ class Certificate extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('station_id, applicant_id, certificate_no, purpose, or_number, investigator_id, officer_id, findings, residentcertnumber, amount, datefiled', 'required'),
-			array('station_id, applicant_id, investigator_id, officer_id, datefiled', 'numerical', 'integerOnly'=>true),
+			array('station_id, applicant_id, certificate_no, purpose, or_number, investigator_id, officer_id, findings, residentcertnumber, residentcertdateissued, amount, datefiled', 'required'),
+			array('station_id, applicant_id, investigator_id, officer_id, residentcertdateissued, datefiled', 'numerical', 'integerOnly'=>true),
 			array('certificate_no, purpose, or_number, findings, residentcertnumber', 'length', 'max'=>200),
 			array('amount', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, station_id, applicant_id, certificate_no, purpose, or_number, investigator_id, officer_id, findings, residentcertnumber, amount, datefiled', 'safe', 'on'=>'search'),
+			array('id, station_id, applicant_id, certificate_no, purpose, or_number, investigator_id, officer_id, findings, residentcertnumber, residentcertdateissued, amount, datefiled', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -67,11 +68,12 @@ class Certificate extends CActiveRecord
 			'applicant_id' => 'Applicant',
 			'certificate_no' => 'Certificate No',
 			'purpose' => 'Purpose',
-			'or_number' => 'Or Number',
+			'or_number' => 'OR Number',
 			'investigator_id' => 'Investigator',
 			'officer_id' => 'Officer',
 			'findings' => 'Findings',
-			'residentcertnumber' => 'Residentcertnumber',
+			'residentcertnumber' => 'Resident Certnumber',
+			'residentcertdateissued' => 'Resident Certificate Date Issued',
 			'amount' => 'Amount',
 			'datefiled' => 'Datefiled',
 		);
@@ -105,6 +107,7 @@ class Certificate extends CActiveRecord
 		$criteria->compare('officer_id',$this->officer_id);
 		$criteria->compare('findings',$this->findings,true);
 		$criteria->compare('residentcertnumber',$this->residentcertnumber,true);
+		$criteria->compare('residentcertdateissued',$this->residentcertdateissued);
 		$criteria->compare('amount',$this->amount,true);
 		$criteria->compare('datefiled',$this->datefiled);
 

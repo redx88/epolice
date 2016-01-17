@@ -754,4 +754,25 @@ label div.checker, label div.radio {
     margin-bottom: 10px;
 }
 
-/* */
+/* bergel's modified css this is temporary*/
+.form input[type=text]{
+	margin-right:10px!important;
+	width:95%;
+
+}
+
+div.list-view div.view{
+	background:#eee;
+	color: #232323;
+	font-weight: bold;
+	font-size: 12pt;
+}
+
+.btn-xlarge {
+    padding: 20px 40px;
+    font-size: 22px; //change this to your desired size
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+}

@@ -63,12 +63,13 @@ class CertificateController extends Controller
 	public function actionCreate()
 	{
 		$model=new Certificate;
-
+		$applicant=new Applicant;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Certificate']))
 		{
+			
 			$model->attributes=$_POST['Certificate'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
@@ -76,6 +77,7 @@ class CertificateController extends Controller
 
 		$this->render('create',array(
 			'model'=>$model,
+			'applicant'=>$applicant,
 		));
 	}
 

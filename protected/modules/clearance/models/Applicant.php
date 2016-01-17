@@ -9,6 +9,7 @@
  * @property string $middlename
  * @property string $lastname
  * @property integer $dateofbirth
+ * @property string $placeofbirth
  * @property integer $civilstatus
  * @property string $address
  */
@@ -30,13 +31,13 @@ class Applicant extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('firstname, middlename, lastname, dateofbirth, civilstatus, address', 'required'),
+			array('firstname, middlename, lastname, dateofbirth, placeofbirth, civilstatus, address', 'required'),
 			array('dateofbirth, civilstatus', 'numerical', 'integerOnly'=>true),
-			array('firstname, middlename, lastname', 'length', 'max'=>200),
+			array('firstname, middlename, lastname, placeofbirth', 'length', 'max'=>200),
 			array('address', 'length', 'max'=>300),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, firstname, middlename, lastname, dateofbirth, civilstatus, address', 'safe', 'on'=>'search'),
+			array('id, firstname, middlename, lastname, dateofbirth, placeofbirth, civilstatus, address', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,8 +62,9 @@ class Applicant extends CActiveRecord
 			'firstname' => 'Firstname',
 			'middlename' => 'Middlename',
 			'lastname' => 'Lastname',
-			'dateofbirth' => 'Dateofbirth',
-			'civilstatus' => 'Civilstatus',
+			'dateofbirth' => 'Date of birth',
+			'placeofbirth' => 'Place of birth',
+			'civilstatus' => 'Civil Status',
 			'address' => 'Address',
 		);
 	}
@@ -90,6 +92,7 @@ class Applicant extends CActiveRecord
 		$criteria->compare('middlename',$this->middlename,true);
 		$criteria->compare('lastname',$this->lastname,true);
 		$criteria->compare('dateofbirth',$this->dateofbirth);
+		$criteria->compare('placeofbirth',$this->placeofbirth,true);
 		$criteria->compare('civilstatus',$this->civilstatus);
 		$criteria->compare('address',$this->address,true);
 

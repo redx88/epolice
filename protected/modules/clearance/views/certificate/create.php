@@ -13,6 +13,12 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Certificate</h1>
-
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<h1>New Police Clearance Record</h1>
+<div class="row-fluid">
+	<div class="span10">
+	<?php $this->renderPartial('_form', array('model'=>$model,'applicant'=>$applicant)); ?>
+	</div>
+	<div class="span2">
+		<h4>EXTRA WINDOW</h4>
+	</div>
+</div>
