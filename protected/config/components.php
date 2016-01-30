@@ -110,9 +110,9 @@ return array(
 				),
 				// uncomment the following to show log messages on web pages
 				
-				array(
+				/*array(
 					'class'=>'CWebLogRoute',
-				),
+				),*/
 				
 			),
 		),
@@ -148,7 +148,7 @@ return array(
 
 		'clientScript' => array(
             'scriptMap' => array(
-                'jquery-ui.css' => '/eclearance/css/jqueryui/cupertino/jquery-ui.css',
+                'jquery-ui.css' => '/epolice/css/jqueryui/cupertino/jquery-ui.css',
             ),
         ),
 		'bootstrap'=>array(
