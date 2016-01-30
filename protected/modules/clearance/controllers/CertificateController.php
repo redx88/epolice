@@ -66,15 +66,39 @@ class CertificateController extends Controller
 		$model=new Certificate;
 		$applicant=new Applicant;
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		 $this->performAjaxValidation($model,$applicant);
+		// $this->performAjaxValidation($applicant);
 
-		if(isset($_POST['Certificate']))
+		if(isset($_POST['Certificate'] , $_POST['Applicant']))
 		{
 			
 			$model->attributes=$_POST['Certificate'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			$applicant->attributes=$_POST['Applicant'];
+			
+			//conhverting some of date into strtotime of type integer
+			$applicant->dateofbirth = strtotime($applicant->dateofbirth);
+			$model->residentcertdateissued = strtotime($model->residentcertdateissued);
+
+			$valid = $model->validate();
+			$valid = $applicant->validate() && $valid;
+
+			//autogenerate the certificate here
+			//also assign the station in certificate-> station
+
+			 if($valid){
+				if($applicant->save()){
+					$model->applicant_id = $applicant->id;
+					if($model->save()){
+						$this->redirect(array('view','id'=>$model->id));
+					}
+				}
+			}
 		}
+
+		//convert back the int to datee
+		//conhverting some of date into strtotime of type integer
+			$applicant->dateofbirth = date("Y-m-d",$applicant->dateofbirth);
+			$model->residentcertdateissued = date("Y-m-d",$model->residentcertdateissued);
 
 		$this->render('create',array(
 			'model'=>$model,
@@ -165,11 +189,11 @@ class CertificateController extends Controller
 	 * Performs the AJAX validation.
 	 * @param Certificate $model the model to be validated
 	 */
-	protected function performAjaxValidation($model)
+	protected function performAjaxValidation($model,$applicant)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='certificate-form')
 		{
-			echo CActiveForm::validate($model);
+			echo CActiveForm::validate(array($model,$applicant));
 			Yii::app()->end();
 		}
 	}

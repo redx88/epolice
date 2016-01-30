@@ -17,9 +17,13 @@
  * @property integer $residentcertdateissued
  * @property string $amount
  * @property integer $datefiled
+ * @property integer $daterelease
  */
 class Certificate extends CActiveRecord
 {
+
+	public $user_searchl,$user_searchf,$user_searchm;
+
 	/**
 	 * @return string the associated database table name
 	 */
@@ -36,13 +40,13 @@ class Certificate extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('station_id, applicant_id, certificate_no, purpose, or_number, investigator_id, officer_id, findings, residentcertnumber, residentcertdateissued, amount, datefiled', 'required'),
-			array('station_id, applicant_id, investigator_id, officer_id, residentcertdateissued, datefiled', 'numerical', 'integerOnly'=>true),
+			array('purpose, or_number, investigator_id, officer_id, findings, residentcertnumber, residentcertdateissued, amount', 'required'),
+			array('station_id, applicant_id, investigator_id, officer_id, residentcertdateissued, datefiled, daterelease', 'numerical', 'integerOnly'=>true),
 			array('certificate_no, purpose, or_number, findings, residentcertnumber', 'length', 'max'=>200),
 			array('amount', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, station_id, applicant_id, certificate_no, purpose, or_number, investigator_id, officer_id, findings, residentcertnumber, residentcertdateissued, amount, datefiled', 'safe', 'on'=>'search'),
+			array('id,user_searchl,user_searchf,user_searchm, station_id, applicant_id, certificate_no, purpose, or_number, investigator_id, officer_id, findings, residentcertnumber, residentcertdateissued, amount, datefiled, daterelease', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -54,6 +58,8 @@ class Certificate extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'applicant'=>array(self::BELONGS_TO,'Applicant','applicant_id')
+			//'profile'=>array(self::BELONGS_TO,'Profile','user_id'),
 		);
 	}
 
@@ -68,14 +74,15 @@ class Certificate extends CActiveRecord
 			'applicant_id' => 'Applicant',
 			'certificate_no' => 'Certificate No',
 			'purpose' => 'Purpose',
-			'or_number' => 'OR Number',
+			'or_number' => 'Or Number',
 			'investigator_id' => 'Investigator',
 			'officer_id' => 'Officer',
 			'findings' => 'Findings',
-			'residentcertnumber' => 'Resident Certnumber',
-			'residentcertdateissued' => 'Resident Certificate Date Issued',
+			'residentcertnumber' => 'Residentcertnumber',
+			'residentcertdateissued' => 'Residentcertdateissued',
 			'amount' => 'Amount',
 			'datefiled' => 'Datefiled',
+			'daterelease' => 'Daterelease',
 		);
 	}
 
@@ -97,6 +104,10 @@ class Certificate extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
+		$criteria->with = array( 'applicant' );
+		$criteria->compare( 'applicant.lastname', $this->user_searchl, true );
+		$criteria->compare( 'applicant.firstname', $this->user_searchf, true );
+		$criteria->compare( 'applicant.middlename', $this->user_searchm, true );
 		$criteria->compare('id',$this->id);
 		$criteria->compare('station_id',$this->station_id);
 		$criteria->compare('applicant_id',$this->applicant_id);
@@ -110,6 +121,7 @@ class Certificate extends CActiveRecord
 		$criteria->compare('residentcertdateissued',$this->residentcertdateissued);
 		$criteria->compare('amount',$this->amount,true);
 		$criteria->compare('datefiled',$this->datefiled);
+		$criteria->compare('daterelease',$this->daterelease);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -125,5 +137,12 @@ class Certificate extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+	}
+
+
+	public function beforeSave() {
+    if ($this->isNewRecord)
+        $this->datefiled = new CDbExpression('NOW()');
+    return parent::beforeSave();
 	}
 }

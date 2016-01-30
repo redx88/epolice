@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2016 at 04:41 AM
+-- Generation Time: Jan 30, 2016 at 07:58 PM
 -- Server version: 5.5.34
 -- PHP Version: 5.4.22
 
@@ -36,7 +36,15 @@ CREATE TABLE IF NOT EXISTS `applicant` (
   `civilstatus` int(11) NOT NULL,
   `address` varchar(300) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `applicant`
+--
+
+INSERT INTO `applicant` (`id`, `firstname`, `middlename`, `lastname`, `dateofbirth`, `placeofbirth`, `civilstatus`, `address`) VALUES
+(1, 'bergel', 'tachado', 'cutara', 1454194800, 'zcmc', 1, 'mampang zambo city'),
+(2, 'fsfdfsg', 'sgdfgdfg', 'dgdfgdfg', 1454194800, 'zcmc', 1, 'mampang zambo city');
 
 -- --------------------------------------------------------
 
@@ -118,8 +126,17 @@ CREATE TABLE IF NOT EXISTS `certificate` (
   `residentcertdateissued` int(20) NOT NULL,
   `amount` decimal(20,2) NOT NULL,
   `datefiled` int(11) NOT NULL,
+  `daterelease` int(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `certificate`
+--
+
+INSERT INTO `certificate` (`id`, `station_id`, `applicant_id`, `certificate_no`, `purpose`, `or_number`, `investigator_id`, `officer_id`, `findings`, `residentcertnumber`, `residentcertdateissued`, `amount`, `datefiled`, `daterelease`) VALUES
+(1, 0, 1, '', 'NBI clearance', '123', 1, 1, 'asdh', '12sdfmin', -3600, '23.00', 2016, 0),
+(2, 0, 2, '', 'NBI clearance', '123', 1, 1, 'asdh', '12sdfmin', -3600, '23.00', 2016, 0);
 
 -- --------------------------------------------------------
 
