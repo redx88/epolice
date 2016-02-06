@@ -41,7 +41,7 @@ class Certificate extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('purpose, or_number, investigator_id, officer_id, findings, residentcertnumber, residentcertdateissued, amount', 'required'),
-			array('station_id, applicant_id, investigator_id, officer_id, residentcertdateissued, datefiled, daterelease', 'numerical', 'integerOnly'=>true),
+			//array('station_id, applicant_id, investigator_id, officer_id, residentcertdateissued, datefiled, daterelease', 'numerical', 'integerOnly'=>true),
 			array('certificate_no, purpose, or_number, findings, residentcertnumber', 'length', 'max'=>200),
 			array('amount', 'length', 'max'=>20),
 			// The following rule is used by search().

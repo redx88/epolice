@@ -50,6 +50,12 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		// 'applicant_id',
 		// 'certificate_no',
 		array(
+	        'class'=>'CLinkColumn',
+	        'label'=>'<i class="btn btn-success bnt-small">renew</i>',
+	        'urlExpression'=>'Yii::app()->createUrl("clearance/certificate/update",array("id"=>$data->applicant->id))',
+	        //'header'=>'Renew'
+	      ),
+		array(
 			'name'=>'user_searchl',
 			'header'=>'Lastname',
 			//'value'=>'$data->applicant->lastname.", ".$data->applicant->firstname." ".$data->applicant->middlename',
@@ -83,7 +89,8 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'datefiled',
 		*/
 		array(
-			'class'=>'CButtonColumn',
+		    'class'=>'CButtonColumn',
+			'template'=>'{view}',
 		),
 	),
 )); ?>
