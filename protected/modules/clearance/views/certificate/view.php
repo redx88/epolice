@@ -22,16 +22,17 @@ $this->menu=array(
 	'data'=>$model,
 	'attributes'=>array(
 		'id',
-		'station_id',
-		'applicant_id',
-		'certificate_no',
+		array(
+			'label'=>'Applicant',
+			'value'=>strtoupper($model->applicant->firstname." ".$model->applicant->middlename." ".$model->applicant->lastname),
+			'type'=>'raw'
+			),
 		'purpose',
+		'certificate_no',
 		'or_number',
-		'investigator_id',
-		'officer_id',
-		'findings',
 		'residentcertnumber',
 		'amount',
 		'datefiled',
+		'findings',
 	),
 )); ?>
