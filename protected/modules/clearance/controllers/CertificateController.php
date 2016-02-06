@@ -113,20 +113,50 @@ class CertificateController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$model=new Certificate;
+		$applicant=Applicant::model()->findByPk($id);
+		// Uncomment the following line if AJAX validation is needed
+		$this->performAjaxValidation($model,$applicant);
+
+
+
+		//$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Certificate']))
+		if(isset($_POST['Certificate'] , $_POST['Applicant']))
 		{
+			
 			$model->attributes=$_POST['Certificate'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			//$applicant->attributes=$_POST['Applicant'];
+			
+			//conhverting some of date into strtotime of type integer
+			$applicant->dateofbirth = strtotime($applicant->dateofbirth);
+			$model->residentcertdateissued = strtotime($model->residentcertdateissued);
+
+			$valid = $model->validate();
+			//$valid = $applicant->validate() && $valid;
+
+			//autogenerate the certificate here
+			//also assign the station in certificate-> station
+
+			 if($valid){
+				// if($applicant->save()){
+				 	$model->applicant_id = $applicant->id;
+					if($model->save()){
+						$this->redirect(array('view','id'=>$model->id));
+					}
+				//}
+			}
 		}
+
+		$applicant->dateofbirth = date("Y-m-d",$applicant->dateofbirth);
+		$model->residentcertdateissued = date("Y-m-d",$model->residentcertdateissued);
 
 		$this->render('update',array(
 			'model'=>$model,
+			'applicant'=>$applicant,
 		));
 	}
 
